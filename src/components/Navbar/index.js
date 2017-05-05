@@ -3,16 +3,24 @@ import React, { Component } from 'react';
 class Navbar extends Component {
   state = {}
   render() {
-    const sections = ['Home', 'About', 'Contact'];
+    const sections = ['Home', 'Contact', 'About'];
+
     return (
-      <ul>
-      {sections.map(function (section) {
-        return ( 
-          <li key={section}> {section}</li>
-          )
-      })}
-    </ul>
-    );
+      <div>
+        <ul className="navbar">
+          { sections
+              .map(section => {
+                return (
+                  <li key={ section }>
+                    <a href="/">
+                      { section }
+                    </a>
+                  </li>
+                )
+              }) }
+        </ul>
+      </div>
+      );
   }
 }
 
