@@ -37,7 +37,8 @@ li {
   justify-content: center;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar .selected {
   background: firebrick;
   color: white;
 }

@@ -1,27 +1,37 @@
-import React, { Component } from 'react';
+import React, { component } from 'react';
 
-class Navbar extends Component {
-  state = {}
+function SelectScene(props) {
+  const scenes = ['Home', 'Gallery', 'Contact', 'About'];
+
+  return (
+    <div>
+      <ul className="navbar">
+        { scenes.map(scene => {
+            return (
+              <li onClick={ this.updateScene.bind(null, scene) } key={ scene } classStyle={ scene === props.selectedScene ? "selected" : null }>
+                { scene }
+              </li>
+            )
+          }) }
+      </ul>
+    </div>
+  )
+}
+
+class Navbar extends React.Component {
   render() {
-    const sections = ['Home', 'Contact', 'About'];
-
     return (
       <div>
-        <ul className="navbar">
-          { sections
-              .map(section => {
-                return (
-                  <li key={ section }>
-                    <a href="/">
-                      { section }
-                    </a>
-                  </li>
-                )
-              }) }
-        </ul>
+        <SelectScene selectedScene={ this.state.selectedScene } onSelect={ this.updateScene } />
       </div>
-      );
+    )
   }
+  updateScene(scene) {
+    this.setState((scene) => {
+      selectedScene: scene
+    })
+  }
+
 }
 
 export default Navbar;
