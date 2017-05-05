@@ -5,8 +5,7 @@ import Navbar from './components/Navbar/index'
 class App extends Component {
   render() {
     return (
-      <div>
-        Hello World
+      <div className="container">
         <Navbar />
       </div>
     );

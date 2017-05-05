@@ -3,3 +3,41 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  width: 720px;
+  margin: 0 auto;
+  background: #eee;
+  padding: 1em;
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  background: coral;
+}
+
+.navbar li {
+  margin: 1em;
+}
+
+.navbar a {
+  width: 10%;
+  padding: 1em;
+  justify-content: center;
+}
+
+.navbar a:hover {
+  background: firebrick;
+  color: white;
+}
