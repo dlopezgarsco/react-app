@@ -1,37 +1,45 @@
-import React, { component } from 'react';
+import React from 'react';
 
 function SelectScene(props) {
   const scenes = ['Home', 'Gallery', 'Contact', 'About'];
 
   return (
-    <div>
-      <ul className="navbar">
-        { scenes.map(scene => {
-            return (
-              <li onClick={ this.updateScene.bind(null, scene) } key={ scene } classStyle={ scene === props.selectedScene ? "selected" : null }>
-                { scene }
-              </li>
-            )
-          }) }
+    <ul className="navbar"> 
+      { scenes.map( scene =>
+          <li 
+            onClick={ props.onSelect.bind(null, scene) } 
+            className={ scene === props.selectedScene ? "selected" : null } 
+            key={ scene }>
+              { scene }
+          </li>
+        )}
       </ul>
-    </div>
   )
 }
 
 class Navbar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedScene: 'Home'
+    }
+    this.updateScene = this.updateScene.bind(this)
+  }
+
+  updateScene = scene => {
+    this.setState({ selectedScene: scene })
+  }
+
   render() {
     return (
       <div>
-        <SelectScene selectedScene={ this.state.selectedScene } onSelect={ this.updateScene } />
+        <SelectScene 
+          selectedScene={ this.state.selectedScene } 
+          onSelect={ this.updateScene } 
+        />
       </div>
     )
   }
-  updateScene(scene) {
-    this.setState((scene) => {
-      selectedScene: scene
-    })
-  }
-
 }
 
 export default Navbar;
