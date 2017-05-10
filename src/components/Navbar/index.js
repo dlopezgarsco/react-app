@@ -1,22 +1,5 @@
 import React from 'react';
 
-function SelectScene(props) {
-  const scenes = ['Home', 'Gallery', 'Contact', 'About'];
-
-  return (
-    <ul className="navbar"> 
-      { scenes.map( scene =>
-          <li 
-            onClick={ props.onSelect.bind(null, scene) } 
-            className={ scene === props.selectedScene ? "selected" : null } 
-            key={ scene }>
-              { scene }
-          </li>
-        )}
-      </ul>
-  )
-}
-
 class Navbar extends React.Component {
   constructor(props) {
     super(props)
@@ -40,6 +23,23 @@ class Navbar extends React.Component {
       </div>
     )
   }
+}
+
+function SelectScene(props) {
+  const scenes = ['Home', 'Gallery', 'Contact', 'About'];
+
+  return (
+    <ul className="navbar"> 
+      { scenes.map( scene =>
+          <li 
+            onClick={ props.onSelect.bind(null, scene) } 
+            className={ scene === props.selectedScene ? "selected" : null } 
+            key={ scene }>
+              { scene }
+          </li>
+        )}
+      </ul>
+  )
 }
 
 export default Navbar;
