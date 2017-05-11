@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -27,15 +28,21 @@ class Navbar extends React.Component {
 
 function SelectScene(props) {
   const scenes = ['Home', 'Gallery', 'Contact', 'About'];
+  const activeClassName = "selected"
 
   return (
     <ul className="navbar"> 
       { scenes.map( scene =>
           <li 
             onClick={ props.onSelect.bind(null, scene) } 
-            className={ scene === props.selectedScene ? "selected" : null } 
+            className={ scene === props.selectedScene ? activeClassName : null } 
             key={ scene }>
+            <NavLink
+              to={`/${scene.toLowerCase()}`}
+              activeClassName={activeClassName}
+            >
               { scene }
+            </NavLink>
           </li>
         )}
       </ul>

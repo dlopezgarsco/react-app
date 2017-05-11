@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchImages } from '../../data/gallery'
 
-class Gallery extends Component {
+export default class Gallery extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -17,7 +17,11 @@ class Gallery extends Component {
     fetchImages()
       .then(data => {
         this.setState(() =>
-          ({ images: data.map(i => i) })
+          ({
+            images: data
+              .map(i => i)
+              .filter(i => i.id < 10)
+          })
         )
       })
   }
@@ -40,14 +44,14 @@ function ImageList(props) {
     <div className="gallery">
     {props.images
       .map(image => 
+      <div key={image.id} className="cell">
         <img 
           key={image.id}
           src={image.url}
           alt={image.title}
         />
+      </div>
     )}
     </div>
   )
 }
-
-export default Gallery;
