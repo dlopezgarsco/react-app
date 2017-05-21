@@ -18,7 +18,7 @@ export default class App extends Component {
             <Route path='/gallery' component={ Gallery } />
             <Route path='/contact' component={ Contact } />
             <Route path='/about' component={ About } />
-            <Route component= { Home } />
+            <Route component={ Home } />
           </Switch>
         </div>
       </BrowserRouter>

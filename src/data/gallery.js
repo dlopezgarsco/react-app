@@ -1,10 +1,15 @@
 import axios from 'axios';
 
-module.exports = {
-  fetchImages: function() {
-    const uri = "http://jsonplaceholder.typicode.com/photos?albumId=1"
+function fetchData() {
+  const uri = "http://jsonplaceholder.typicode.com/photos?albumId=1"
+  return axios.get(uri)
+    .then(response => response.data)
+}
 
-    return axios.get(uri)
-      .then(response => response.data)
+module.exports = {
+  getImages: function(quantity) {
+    return fetchData()
+      .then(data => data
+        .filter(i => i.id < quantity))
   }
 }
